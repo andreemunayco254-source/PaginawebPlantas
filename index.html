@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KutiTika</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">KutiTika</div>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#Catalogo">Catalogo</a></li>
+            <li><a href="#Contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+<section id="hero">
+    <div class="hero-wrapper">
+
+        <div class="hero-text active">
+            <h1>Arte inspirado en la belleza resiliente de las orquídeas</h1>
+            <p>Celebra los nuevos comienzos, la transformación y la fuerza interior.</p>
+        </div>
+
+        <div class="hero-text">
+            <h1>Encuentra el regalo perfecto</h1>
+            <p>Los mejores detalles para cada ocasión</p>
+        </div>
+
+        <a href="#Catalogo" class="cta-button">Ver</a>
+
+    </div>
+</section>
+
+<section id="Catalogo" class="catalogo">
+
+    <h2>Las Más Vendidas</h2>
+
+    <div class="catalogo-grid">
+
+        <!-- PRODUCTO 1 -->
+        <div class="catalogo-card">
+            <div class="slider">
+
+                <button class="prev" onclick="cambiarImagen(this, -1)">❮</button>
+
+                <img src="girasoles.png.jpeg" class="slide active" onclick="abrirImagen(this)">
+                <img src="girasoles2.jpeg" class="slide" onclick="abrirImagen(this)">
+
+                <button class="next" onclick="cambiarImagen(this, 1)">❯</button>
+
+            </div>
+
+            <h3>Girasoles</h3>
+            <p>S/.80</p>
+        </div>
+
+        <!-- PRODUCTO 2 -->
+        <div class="catalogo-card">
+            <div class="slider">
+
+                <button class="prev" onclick="cambiarImagen(this, -1)">❮</button>
+
+                <img src="orquidea_morada2.png.jpeg" class="slide active" onclick="abrirImagen(this)">
+                <img src="orquidea2.jpeg" class="slide" onclick="abrirImagen(this)">
+
+                <button class="next" onclick="cambiarImagen(this, 1)">❯</button>
+
+            </div>
+
+            <h3>Orquídeas</h3>
+            <p>S/.120</p>
+        </div>
+
+        <!-- PRODUCTO 3 -->
+        <div class="catalogo-card">
+            <div class="slider">
+
+                <button class="prev" onclick="cambiarImagen(this, -1)">❮</button>
+
+                <img src="ramocumpleaños.png.jpeg" class="slide active" onclick="abrirImagen(this)">
+                <img src="ramo2.jpeg" class="slide" onclick="abrirImagen(this)">
+
+                <button class="next" onclick="cambiarImagen(this, 1)">❯</button>
+
+            </div>
+
+            <h3>Ramo</h3>
+            <p>S/.100</p>
+        </div>
+
+</section>
+        
+
+
+    </div>
+
+</section>
+
+<section id="Contacto" class="contacto"></section>
+
+</main>
+
+<footer>
+    <p>© KutiTika</p>
+</footer>
+
+<script>
+let current = 0;
+const texts = document.querySelectorAll(".hero-text");
+
+setInterval(() => {
+    texts[current].classList.remove("active");
+    current = (current + 1) % texts.length;
+    texts[current].classList.add("active");
+}, 5000);
+</script>
+
+<!-- BOTÓN WHATSAPP -->
+<a href="https://wa.me/51945283024?text=Hola,%20quiero%20hacer%20un%20pedido" 
+   class="whatsapp-btn" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
+
+<!-- MENSAJE FLOTANTE -->
+<div class="whatsapp-text">
+    Solicita tu pedido aquí
+</div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" onclick="cerrarImagen()">
+    <img id="lightbox-img">
+</div>
+
+<script>
+function abrirImagen(img) {
+    let modal = document.createElement("div");
+    modal.style.position = "fixed";
+    modal.style.top = 0;
+    modal.style.left = 0;
+    modal.style.width = "100%";
+    modal.style.height = "100%";
+    modal.style.background = "rgba(0,0,0,0.9)";
+    modal.style.display = "flex";
+    modal.style.justifyContent = "center";
+    modal.style.alignItems = "center";
+    modal.style.zIndex = "1000";
+
+    let imagenGrande = document.createElement("img");
+    imagenGrande.src = img.src;
+    imagenGrande.style.maxWidth = "90%";
+    imagenGrande.style.maxHeight = "90%";
+    imagenGrande.style.borderRadius = "10px";
+
+    modal.appendChild(imagenGrande);
+
+    modal.onclick = function () {
+        modal.remove();
+    };
+
+    document.body.appendChild(modal);
+
+    
+}
+
+
+</script>
+
+</body>
+</html>
